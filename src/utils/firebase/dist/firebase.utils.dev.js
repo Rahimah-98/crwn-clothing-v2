@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createAuthUserWithEmailAndPassword = exports.createUserDocumentFromAuth = exports.db = exports.signInWithGooglePopup = exports.auth = void 0;
+exports.signInAuthWithEmailAndPassword = exports.createAuthUserWithEmailAndPassword = exports.createUserDocumentFromAuth = exports.db = exports.signInWithGooglePopup = exports.auth = void 0;
 
 var _app = require("firebase/app");
 
@@ -137,4 +137,33 @@ var createAuthUserWithEmailAndPassword = function createAuthUserWithEmailAndPass
 };
 
 exports.createAuthUserWithEmailAndPassword = createAuthUserWithEmailAndPassword;
+
+var signInAuthWithEmailAndPassword = function signInAuthWithEmailAndPassword(email, password) {
+  return regeneratorRuntime.async(function signInAuthWithEmailAndPassword$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          if (!(!email || !password)) {
+            _context3.next = 2;
+            break;
+          }
+
+          return _context3.abrupt("return");
+
+        case 2:
+          _context3.next = 4;
+          return regeneratorRuntime.awrap((0, _auth.signInWithEmailAndPassword)(auth, email, password));
+
+        case 4:
+          return _context3.abrupt("return", _context3.sent);
+
+        case 5:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  });
+};
+
+exports.signInAuthWithEmailAndPassword = signInAuthWithEmailAndPassword;
 //# sourceMappingURL=firebase.utils.dev.js.map
