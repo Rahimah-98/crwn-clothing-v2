@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signInAuthWithEmailAndPassword = exports.createAuthUserWithEmailAndPassword = exports.createUserDocumentFromAuth = exports.db = exports.signInWithGooglePopup = exports.auth = void 0;
+exports.onAuthStateChangedListener = exports.signOutUser = exports.signInAuthWithEmailAndPassword = exports.createAuthUserWithEmailAndPassword = exports.createUserDocumentFromAuth = exports.db = exports.signInWithGooglePopup = exports.auth = void 0;
 
 var _app = require("firebase/app");
 
@@ -166,4 +166,39 @@ var signInAuthWithEmailAndPassword = function signInAuthWithEmailAndPassword(ema
 };
 
 exports.signInAuthWithEmailAndPassword = signInAuthWithEmailAndPassword;
+
+var signOutUser = function signOutUser() {
+  return regeneratorRuntime.async(function signOutUser$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.next = 2;
+          return regeneratorRuntime.awrap((0, _auth.signOut)(auth));
+
+        case 2:
+          return _context4.abrupt("return", _context4.sent);
+
+        case 3:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  });
+};
+
+exports.signOutUser = signOutUser;
+
+var onAuthStateChangedListener = function onAuthStateChangedListener(callback, errorCallback, completedCallback) {
+  return (0, _auth.onAuthStateChanged)(auth, callback, errorCallback, completedCallback);
+};
+/*
+* {
+  next: callback,
+  error: errorCallback,
+  complete: completedCallback
+}
+ */
+
+
+exports.onAuthStateChangedListener = onAuthStateChangedListener;
 //# sourceMappingURL=firebase.utils.dev.js.map
