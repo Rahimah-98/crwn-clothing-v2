@@ -3,9 +3,8 @@ import { useState } from 'react';
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
-import './sign-in.styles.scss';
+import { SignInContainer, ButtonsContainer } from './sign-in.styles';
 import {
-  createUserDocumentFromAuth,
   signInWithGooglePopup,
   signInAuthWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
@@ -31,8 +30,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthWithEmailAndPassword(email, password);
-
+      await signInAuthWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -54,7 +52,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className='sign-up-container'>
+    <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -77,7 +75,7 @@ const SignInForm = () => {
           required
         />
 
-        <div className='buttons-container'>
+        <ButtonsContainer>
           <Button type='submit'>Sign In</Button>
           <Button
             type='button'
@@ -85,9 +83,9 @@ const SignInForm = () => {
             onClick={signInWithGoogle}>
             Google sign in
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 

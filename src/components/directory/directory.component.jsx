@@ -1,5 +1,5 @@
+import styled from 'styled-components';
 import DirectoryItem from '../directory-item/directory-item.component';
-import './directory.styles.scss';
 
 const categories = [
   {
@@ -33,13 +33,21 @@ const categories = [
     route: 'shop/mens',
   },
 ];
+
+const CategoriesContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
 const Directory = () => {
   return (
-    <div className='categories-container'>
+    <CategoriesContainer>
       {categories.map((category) => (
         <DirectoryItem key={category.id} category={category} />
       ))}
-    </div>
+    </CategoriesContainer>
   );
 };
 

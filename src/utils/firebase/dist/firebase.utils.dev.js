@@ -25,7 +25,7 @@ var firebaseConfig = {
   messagingSenderId: '674252949553',
   appId: '1:674252949553:web:6a0266915f773b95fead10'
 };
-var firebaseApp = (0, _app.initializeApp)(firebaseConfig);
+(0, _app.initializeApp)(firebaseConfig);
 var googleProvider = new _auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: 'select_account'

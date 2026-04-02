@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -6,14 +8,22 @@ import {
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
-import './sign-up.styles.scss';
-
 const defaultFormFields = {
   displayName: '',
   email: '',
   password: '',
   confirmPassword: '',
 };
+
+const SignUpContainer = styled.div`
+display: flex;
+  flex-direction: column;
+  width: 380px;
+
+  h2 {
+    margin: 10px 0;
+  }
+`;
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -54,7 +64,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className='sign-up-container'>
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -98,7 +108,7 @@ const SignUpForm = () => {
           Sign Up
         </Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

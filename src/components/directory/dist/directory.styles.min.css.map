@@ -1,1 +1,1 @@
-{"version":3,"sources":["directory.styles.scss"],"names":[],"mappings":"AAAA,sBACE,MAAO,KACP,QAAS,KACT,UAAW,KACX,gBAAiB","file":"directory.styles.min.css","sourcesContent":[".categories-container {\r\n  width: 100%;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-between;\r\n}\r\n"]}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"directory.styles.min.css","sourcesContent":[]}
