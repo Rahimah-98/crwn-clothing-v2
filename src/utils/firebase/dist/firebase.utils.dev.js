@@ -70,7 +70,7 @@ var addCollectionAndDocuments = function addCollectionAndDocuments(collectionKey
 exports.addCollectionAndDocuments = addCollectionAndDocuments;
 
 var getCategoriesAndDocuments = function getCategoriesAndDocuments() {
-  var collectionRef, q, querySnapshot, categoryMap;
+  var collectionRef, q, querySnapshot;
   return regeneratorRuntime.async(function getCategoriesAndDocuments$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -82,17 +82,11 @@ var getCategoriesAndDocuments = function getCategoriesAndDocuments() {
 
         case 4:
           querySnapshot = _context2.sent;
-          categoryMap = querySnapshot.docs.reduce(function (acc, docSnapshot) {
-            var _docSnapshot$data = docSnapshot.data(),
-                title = _docSnapshot$data.title,
-                items = _docSnapshot$data.items;
+          return _context2.abrupt("return", querySnapshot.docs.map(function (docSnapshot) {
+            return docSnapshot.data();
+          }));
 
-            acc[title.toLowerCase()] = items;
-            return acc;
-          }, {});
-          return _context2.abrupt("return", categoryMap);
-
-        case 7:
+        case 6:
         case "end":
           return _context2.stop();
       }
@@ -125,47 +119,46 @@ var createUserDocumentFromAuth = function createUserDocumentFromAuth(userAuth) {
 
         case 3:
           userDocRef = (0, _firestore.doc)(db, 'users', userAuth.uid);
-          console.log(userDocRef);
-          _context3.next = 7;
+          _context3.next = 6;
           return regeneratorRuntime.awrap((0, _firestore.getDoc)(userDocRef));
 
-        case 7:
+        case 6:
           userSnapshot = _context3.sent;
           console.log(userSnapshot);
 
           if (userSnapshot.exists()) {
-            _context3.next = 20;
+            _context3.next = 19;
             break;
           }
 
           displayName = userAuth.displayName, email = userAuth.email;
           createAt = new Date();
-          _context3.prev = 12;
-          _context3.next = 15;
+          _context3.prev = 11;
+          _context3.next = 14;
           return regeneratorRuntime.awrap((0, _firestore.setDoc)(userDocRef, _objectSpread({
             displayName: displayName,
             email: email,
             createAt: createAt
           }, additionalInformation)));
 
-        case 15:
-          _context3.next = 20;
+        case 14:
+          _context3.next = 19;
           break;
 
-        case 17:
-          _context3.prev = 17;
-          _context3.t0 = _context3["catch"](12);
+        case 16:
+          _context3.prev = 16;
+          _context3.t0 = _context3["catch"](11);
           console.log('error creating the user', _context3.t0.message);
 
-        case 20:
+        case 19:
           return _context3.abrupt("return", userDocRef);
 
-        case 21:
+        case 20:
         case "end":
           return _context3.stop();
       }
     }
-  }, null, null, [[12, 17]]);
+  }, null, null, [[11, 16]]);
 };
 
 exports.createUserDocumentFromAuth = createUserDocumentFromAuth;
